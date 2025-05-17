@@ -14,8 +14,9 @@
       type="range"
       min="0"
       max="100"
+      [(ngModel)]="enrollment.progress"
       [value]="enrollment.progress"
-      (input)="updateProgress(enrollment, $event.target.valueAsNumber)"
+      (input)="updateProgress(enrollment, enrollment.progress)"
       class="w-full h-2 bg-gray-200 rounded-lg accent-blue-600 cursor-pointer transition"
     />
 

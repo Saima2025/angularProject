@@ -40,7 +40,13 @@ export function getCoursesFromLocalStorage(): Course[] {
 }
 
 export function getEnrollments(): Enrollment[] {
-  return JSON.parse(localStorage.getItem('enrollments') || '[]');
+  try {
+    const data = localStorage.getItem('enrollments');
+    return data ? JSON.parse(data) as Enrollment[] : [];
+  } catch (error) {
+    console.error('Error parsing courses from localStorage:', error);
+    return [];
+  }
 }
 
 export function saveEnrollment(enrollment: Enrollment): void {
@@ -51,9 +57,3 @@ export function saveEnrollment(enrollment: Enrollment): void {
 export function saveEnrollmentsToLocalStorage(enrollments: Enrollment[]): void {
   localStorage.setItem('enrollments', JSON.stringify(enrollments));
 }
-
-// export function addEnrollment(newEnrollment: Enrollment): void {
-//   const enrollments = getEnrollments();
-//   enrollments.push(newEnrollment);
-//   saveEnrollments(enrollments);
-// }

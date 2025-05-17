@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Course } from '../../interface/course.interface'; // Define Course interface in a shared file
+import { Course } from '../../interface/course.interface';
 import { getCoursesFromLocalStorage, getEnrollments, saveEnrollment } from '../../utils/localstorage.helpers';
 
 @Component({

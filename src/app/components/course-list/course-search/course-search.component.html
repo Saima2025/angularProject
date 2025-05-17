@@ -1,0 +1,13 @@
+<div class="mb-6">
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    (input)="onSearchChange()"
+    placeholder="Search by title or category..."
+    class="w-full border border-gray-300 rounded-md px-4 py-2 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+  />
+</div>
+
+<div *ngIf="filtered.length === 0" class="text-center text-gray-500 italic">
+  No courses found.
+</div>

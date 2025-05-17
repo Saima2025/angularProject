@@ -57,3 +57,14 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+Here i have used course.service to initially set initial sample course list and enrollment list .
+In interface folder there are 3 models - enrollment, course and user .
+In utils i have used localstorage helper file to get set localstorage property values.
+In course list component i have used a single function to filter by cateogory and sort by duration and title.
+In course list component the search component emits the search value by which i have filtered the data.
+In learning history component i have filtered the completed courses from all the enrolled courses data.Then i matched the completed enrolled course id with all the course id to get that specific course title,category and concat the completedAt property also.
+In my learning component i have filtered the incomplete courses with progress less than 100 from all the enrolled course.
+
+

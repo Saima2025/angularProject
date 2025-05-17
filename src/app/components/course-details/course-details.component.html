@@ -1,0 +1,43 @@
+<div *ngIf="course; else notFound" class="p-6 max-w-3xl mx-auto bg-white rounded-lg shadow-md">
+  <h2 class="text-3xl font-extrabold mb-4 text-gray-900">{{ course.title }}</h2>
+
+  <p class="mb-3 text-gray-700">
+    <span class="font-semibold">Description:</span> {{ course.description }}
+  </p>
+
+  <p class="mb-3 text-gray-700">
+    <span class="font-semibold">Category:</span> {{ course.category }}
+  </p>
+
+  <p class="mb-3 text-gray-700">
+    <span class="font-semibold">Duration:</span> {{ course.duration }} weeks
+  </p>
+
+  <p class="mb-4">
+    <span class="font-semibold">Status:</span>
+    <span [ngClass]="course.isFree ? 'text-green-600 font-semibold' : 'text-red-600 font-semibold'">
+      {{ course.isFree ? 'Free' : 'Paid' }}
+    </span>
+  </p>
+
+  <div class="mb-6">
+    <span class="font-semibold text-gray-800">Prerequisites:</span>
+    <div *ngIf="course.prerequisites.length === 0" class="text-gray-500 italic mt-1">None</div>
+    <ul *ngIf="course.prerequisites.length > 0" class="list-disc list-inside mt-1 space-y-1 text-gray-700">
+      <li *ngFor="let id of course.prerequisites">{{ id }}</li>
+    </ul>
+  </div>
+
+  <button
+    (click)="enroll()"
+    class="bg-blue-600 hover:bg-blue-700 transition-colors text-white font-semibold px-5 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+  >
+    Enroll
+  </button>
+
+  <p *ngIf="message" class="mt-4 text-red-600 font-medium">{{ message }}</p>
+</div>
+
+<ng-template #notFound>
+  <p class="text-center text-red-600 font-semibold mt-8">Course not found.</p>
+</ng-template>

@@ -1,0 +1,29 @@
+<div class="p-6 max-w-3xl mx-auto">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">My Learning</h2>
+
+  <div *ngFor="let enrollment of enrollments" class="mb-6 p-5 border border-gray-200 rounded-lg shadow-sm bg-white">
+    <div class="font-semibold text-xl text-gray-800 mb-1">{{ getCourseTitle(enrollment.courseId) }}</div>
+    <div class="text-gray-600 mb-1">
+      <span class="font-medium">Status:</span> {{ enrollment.status | titlecase }}
+    </div>
+    <div class="text-gray-600 mb-3">
+      <span class="font-medium">Progress:</span> {{ enrollment.progress }}%
+    </div>
+
+    <input
+      type="range"
+      min="0"
+      max="100"
+      [value]="enrollment.progress"
+      (input)="updateProgress(enrollment, $event.target.valueAsNumber)"
+      class="w-full h-2 bg-gray-200 rounded-lg accent-blue-600 cursor-pointer transition"
+    />
+
+    <div *ngIf="enrollment.status === 'completed'" class="text-green-600 mt-3 font-semibold">
+      Completed on: {{ enrollment.completedAt | date:'mediumDate' }}
+    </div>
+  </div>
+  <div *ngIf="enrollments.length === 0" class="text-center text-gray-500 mt-8">
+    You have no incomplete courses.
+  </div>
+</div>
